@@ -15,6 +15,7 @@ export const EditScreenView = () => {
 
   return (
     <Modal
+      style={styles.modal}
       isVisible={context.showEditScreen}
       onBackdropPress={context.handleDismissEdit}
       onBackButtonPress={context.handleDismissEdit}
@@ -23,10 +24,16 @@ export const EditScreenView = () => {
         <ScrollView>
           <Image
             source={{ uri: item.imageUri }}
-            style={{ height: 250, width: '100%' }}
+            style={styles.headerImage}
           />
-          <Text>{item.title}</Text>
-          <Text>{item.body}</Text>
+          <View style={styles.contentContainer}>
+            <Text style={styles.titleLabel}>
+              {item.title}
+            </Text>
+            <Text style={styles.bodyLabel}>
+              {item.body}
+            </Text>
+          </View>
         </ScrollView>
       </View>
     </Modal>
@@ -38,7 +45,29 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     flex: 1,
     marginTop: 75,
-    borderRadius: 4,
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+  },
+  headerImage: {
+    height: 250,
+    width: '100%',
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+  },
+  contentContainer: {
     padding: 15
+  },
+  modal: {
+    marginLeft: 0,
+    marginRight: 0,
+    marginBottom: 0
+  },
+  titleLabel: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  bodyLabel: {
+    fontSize: 16,
+    marginTop: 20
   }
 })
